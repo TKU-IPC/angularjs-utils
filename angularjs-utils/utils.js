@@ -10,4 +10,18 @@
 
         return isDate;    
     };
+
+    this.toStrArr = function (arr, pname, predicate) {
+        var result;
+
+        if (predicate) {
+            result = _.filter(arr, predicate);
+        }
+        
+        result = _.uniq(result, function (m) { 
+            return m[pname]; 
+        });
+
+        return _.pluck(result, pname);
+    };
 });
